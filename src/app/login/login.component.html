@@ -1,0 +1,38 @@
+<div class="w3l_banner_nav_right">
+    <!-- login -->
+            <div class="w3_login">
+                <h3>Sign In & Sign Up</h3>
+                <div class="w3_login_module">
+                    <div class="module form-module">
+                      <div class="toggle"><i class="fa fa-times fa-pencil"></i>
+                        <div class="tooltip">Click Me</div>
+                      </div>
+                      <div class="form">
+                        <h2>Login to your account</h2>
+                        <p class="alert alert-warning" *ngIf="msg" >{{msg}}</p>
+                        <form action="#" method="post" [formGroup]="reactiveFormDatas" (submit)="loginForm()">
+                          <input type="text" name="Username" placeholder="Username" formControlName="Username" required=" ">
+                          <input type="password" name="Password" placeholder="Password"formControlName="Password" required=" ">
+                          <input type="submit" value="Login">
+                        </form>
+                      </div>
+                      <div class="form">
+                        <h2>Create an account</h2>
+                        <form action="#" method="post" #temp="ngForm" (submit)="newAccount(temp)" autocomplete="off">
+                          <input type="text" name="Username" placeholder="Username" #uname="ngModel"  ngModel pattern="[a-zA-Z]*" required=" ">
+                         <p class="alert alert-danger" *ngIf="uname.errors?.['pattern'] && uname.untouched">Enter Valid Username</p> 
+                          <input type="password" name="Password" placeholder="Password" #pass="ngModel"  ngModel required=" ">
+                          <!-- <p class="alert alert-danger" *ngIf="pass.errors?.['pattern'] && pass.untouched">Password should be max 8 letters,with atleast a symbol,upper and lower case and a number. </p>  -->
+                          <input type="email" name="Email" placeholder="Email Address" #mail="ngModel" pattern="[a-z0-9]+@[a-z]+\.[a-z]{2,3}" ngModel required=" ">
+                          <p class="alert alert-danger" *ngIf="mail.errors?.['pattern'] && mail.untouched">Enter Valid Email</p> 
+                          <input type="text" name="Phone" placeholder="Phone Number" #num="ngModel" ngModel pattern="^[6-9]\d{9}$" required=" ">
+                          <p class="alert alert-danger" *ngIf="num.errors?.['pattern'] && num.untouched">Enter Valid Email</p>                   
+                          <input type="submit" value="Register">
+                        </form>
+                      </div>
+                      <div class="cta"><a href="#">Forgot your password?</a></div>
+                    </div>
+                </div>
+            </div>
+    <!-- //login -->
+            </div>

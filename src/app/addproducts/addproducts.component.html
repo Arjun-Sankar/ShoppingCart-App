@@ -1,0 +1,28 @@
+<div class="w3l_banner_nav_right">
+    <!-- login -->
+            <div class="w3_login">
+                <h3>Add Products</h3>
+                <div class="w3_login_module">
+                    <div class="module form-module">
+                      <div class="toggle"><i class="fa fa-times fa-pencil"></i>
+                      </div>
+                      <div class="form">
+                        <h2>Create Product</h2> 
+                        <p class="alert " [ngClass]="{'alert alert-success':!isError,'alert alert-warning':isError}" *ngIf="msg">{{msg}}</p> <br>
+                        <form action="#" method="post" #temp="ngForm" (submit)="newProducts(temp)" autocomplete="off"  >
+                            <select name="catid"  ngModel style="padding: 10px; width:100%;">
+                                <option value="">Select the Category</option>
+                                <option *ngFor="let cat of categories" value="{{cat._id}}">{{cat.catName}}</option>
+                            </select> <br><br>
+                            <input type="text" name="name" placeholder="Product Name"  ngModel required> 
+                            <input type="text" name="price" placeholder="Product Price"  ngModel required> <br>
+                            <input type="file" name="image"  ngModel required (change)="addImage($event)"> <br><br>
+                            <textarea  name="des" cols="37" rows="5"  ngModel required ></textarea>
+                            <input type="submit" value="Add Product">
+                        </form>
+                      </div>
+                    </div>
+                </div>
+            </div>
+    <!-- //login -->
+            </div>
